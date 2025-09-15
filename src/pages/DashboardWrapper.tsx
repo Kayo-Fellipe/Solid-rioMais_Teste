@@ -133,3 +133,31 @@ function App() {
 }
 
 export default DashboardWrapper;
+
+mport Navbar from './components/Navbar';
+
+function DashboardWrapper() {
+  const [currentView, setCurrentView] = useState<View>('painel');
+  const [selectedCampaignId, setSelectedCampaignId] = useState<number | null>(null);
+
+  // ... seus handlers
+
+  return (
+    <div className="min-h-screen bg-gray-50">
+      <Navbar /> {/* Aqui está a Navbar global */}
+      
+      <main className="pt-16">
+        {currentView === 'painel' && <DashboardPage onCampaignClick={handleCampaignClick} />}
+        {currentView === 'campanhas' && <CampaignsPage onCampaignClick={handleCampaignClick} />}
+        {currentView === 'campaign-dashboard' && selectedCampaignId && (
+          <CampaignDashboard campaignId={selectedCampaignId} onBack={handleBackToCampaigns} />
+        )}
+        {currentView === 'configuracoes' && (
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 text-center text-gray-600">
+            Página em desenvolvimento...
+          </div>
+        )}
+      </main>
+    </div>
+  );
+}
