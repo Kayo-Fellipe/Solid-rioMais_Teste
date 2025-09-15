@@ -61,6 +61,12 @@ const Navbar = () => {
                 <span>Minha conta</span>
               </Link>
               
+              <Link to="/dashboard">
+                <Button className="bg-solidario-blue hover:bg-solidario-darkBlue text-white rounded-full">
+                  Dashboard
+                </Button>
+              </Link>
+              
               {isAdmin() && (
                 <Link to="/admin" className="text-gray-700 hover:text-solidario-blue">
                   Admin
