@@ -17,8 +17,8 @@ interface CampaignDashboardProps {
 const CampaignDashboard: React.FC<CampaignDashboardProps> = ({ campaignId, onBack }) => {
   const [filters, setFilters] = useState({
     periodo: 'Último mês',
-    formaPagamento: 'Todos',
-    tipoCampanha: 'Todos',
+    startDate: '',
+    endDate: '',
     statusCampanha: 'Todos',
     localidade: 'Todas',
     doadores: 'Todos'

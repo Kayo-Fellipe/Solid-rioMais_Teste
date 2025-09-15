@@ -142,60 +142,11 @@ const MyAccount = () => {
               <Tabs defaultValue={profile?.is_institution ? "dashboard" : "profile"}>
                 <TabsList className={`grid w-full ${profile?.is_institution ? 'grid-cols-4' : 'grid-cols-3'} mb-8`}>
                   {profile?.is_institution && (
-                    <TabsTrigger value="dashboard">Dashboard</TabsTrigger>
+                    <TabsTrigger value="profile">Meu Perfil</TabsTrigger>
                   )}
-                  <TabsTrigger value="profile">Meu Perfil</TabsTrigger>
-                  <TabsTrigger value="donations">Doações</TabsTrigger>
                   <TabsTrigger value="settings">Configurações</TabsTrigger>
                 </TabsList>
                 
-                {profile?.is_institution && (
-                  <TabsContent value="dashboard">
-                    <div className="space-y-6">
-                      {donationsLoading ? (
-                        <div className="flex justify-center py-12">
-                          <Loader2 className="h-8 w-8 animate-spin text-solidario-blue" />
-                        </div>
-                      ) : (
-                        <>
-                          {/* Métricas */}
-                          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
-                            <DashboardCard
-                              title="Total Arrecadado"
-                              value={`R$ ${metrics.totalAmount.toFixed(2)}`}
-                              icon={DollarSign}
-                              description="Doações aprovadas"
-                            />
-                            <DashboardCard
-                              title="Total de Doações"
-                              value={metrics.totalDonations}
-                              icon={TrendingUp}
-                              description="Doações concluídas"
-                            />
-                            <DashboardCard
-                              title="Doadores Únicos"
-                              value={metrics.uniqueDonors}
-                              icon={Users}
-                              description="Pessoas diferentes"
-                            />
-                            <DashboardCard
-                              title="Pendentes"
-                              value={`R$ ${metrics.pendingAmount.toFixed(2)}`}
-                              icon={Clock}
-                              description="Aguardando aprovação"
-                            />
-                          </div>
-
-                          {/* Gráfico */}
-                          <DonationsChart donations={donations} />
-
-                          {/* Tabela de doações */}
-                          <DonationsTable donations={donations.slice(0, 10)} />
-                        </>
-                      )}
-                    </div>
-                  </TabsContent>
-                )}
                 
                 <TabsContent value="profile">
                   <Card>
@@ -254,41 +205,6 @@ const MyAccount = () => {
                         </Button>
                       </CardFooter>
                     </form>
-                  </Card>
-                </TabsContent>
-                
-                <TabsContent value="donations">
-                  <Card>
-                    <CardHeader>
-                      <CardTitle>Minhas Doações</CardTitle>
-                      <CardDescription>
-                        {profile?.is_institution 
-                          ? "Doações recebidas pela sua instituição."
-                          : "Histórico de suas contribuições."
-                        }
-                      </CardDescription>
-                    </CardHeader>
-                    <CardContent>
-                      {profile?.is_institution ? (
-                        donationsLoading ? (
-                          <div className="flex justify-center py-12">
-                            <Loader2 className="h-8 w-8 animate-spin text-solidario-blue" />
-                          </div>
-                        ) : (
-                          <DonationsTable donations={donations} />
-                        )
-                      ) : (
-                        <div className="text-center py-12">
-                          <p className="text-gray-500">Você ainda não fez nenhuma doação.</p>
-                          <Button
-                            className="mt-4 bg-solidario-blue hover:bg-solidario-darkBlue"
-                            onClick={() => navigate("/donate")}
-                          >
-                            Fazer uma doação
-                          </Button>
-                        </div>
-                      )}
-                    </CardContent>
                   </Card>
                 </TabsContent>
                 
