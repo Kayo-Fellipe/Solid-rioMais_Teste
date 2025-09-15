@@ -63,10 +63,10 @@ const CampaignsPage: React.FC<CampaignsPageProps> = ({ onCampaignClick }) => {
         </div>
 
         {/* Search and Filters */}
-        <div className="bg-white rounded-xl shadow-sm border border-gray-200 p-6 mb-8">
-          <div className="grid grid-cols-1 lg:grid-cols-4 gap-4 items-end">
+        <div className="bg-white rounded-xl shadow-sm border border-gray-200 p-4 sm:p-6 mb-8">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 items-end">
             {/* Search */}
-            <div className="lg:col-span-1">
+            <div className="sm:col-span-2 lg:col-span-1">
               <label className="block text-sm font-medium text-gray-700 mb-2">
                 Buscar Campanhas
               </label>
@@ -152,7 +152,7 @@ const CampaignsPage: React.FC<CampaignsPageProps> = ({ onCampaignClick }) => {
         </div>
 
         {/* Campaigns Grid */}
-        <div className="grid grid-cols-1 lg:grid-cols-2 xl:grid-cols-3 gap-6">
+        <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-4 sm:gap-6">
           {filteredCampaigns.map((campaign) => (
             <CampaignCard
               key={campaign.id}

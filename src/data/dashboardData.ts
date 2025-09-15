@@ -116,3 +116,15 @@ export const recentDonations = [
   { id: 2, donor: 'Osvaldo Cruz', amount: 200, date: '20/08/2025' },
   { id: 3, donor: 'Kleber Marques', amount: 200, date: '20/08/2025' }
 ];
+
+export const scatterData = [
+  { date: '2025-08-01', amount: 50000, displayDate: '01/08' },
+  { date: '2025-08-05', amount: 75000, displayDate: '05/08' },
+  { date: '2025-08-10', amount: 120000, displayDate: '10/08' },
+  { date: '2025-08-15', amount: 220000, displayDate: '15/08' },
+  { date: '2025-08-20', amount: 180000, displayDate: '20/08' },
+  { date: '2025-08-25', amount: 280000, displayDate: '25/08' },
+  { date: '2025-08-30', amount: 320000, displayDate: '30/08' },
+  { date: '2025-09-05', amount: 290000, displayDate: '05/09' },
+  { date: '2025-09-12', amount: 340000, displayDate: '12/09' }
+];

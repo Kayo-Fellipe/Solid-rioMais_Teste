@@ -9,6 +9,7 @@ import TopDonors from './TopDonors';
 import RecentDonations from './RecentDonations';
 import CampaignsList from './CampaignsList';
 import HighlightBanner from './HighlightBanner';
+import ScatterChart from './ScatterChart';
 import {
   evolutionData,
   distributionData,
@@ -16,7 +17,8 @@ import {
   topCampaigns,
   topDonors,
   recentDonations,
-  campaignsList
+  campaignsList,
+  scatterData
 } from '../data/dashboardData';
 
 interface DashboardPageProps {
@@ -52,7 +54,7 @@ const DashboardPage: React.FC<DashboardPageProps> = ({ onCampaignClick }) => {
         </div>
 
         {/* Dashboard Cards */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-8">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6 mb-8">
           <DashboardCard
             title="Total Arrecadado"
             value={`R$ ${totalRaised.toLocaleString('pt-BR', { minimumFractionDigits: 2 })}`}
@@ -87,15 +89,22 @@ const DashboardPage: React.FC<DashboardPageProps> = ({ onCampaignClick }) => {
         <HighlightBanner message="Este mês, 45% das doações vieram da campanha Emergencial" />
 
         {/* Charts Row */}
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 mb-8">
-          <div className="lg:col-span-1">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-4 sm:gap-8 mb-8">
+          <div className="order-1">
             <WeeklyChart data={weeklyData} />
           </div>
-          <TopCampaigns campaigns={topCampaigns} />
+          <div className="order-2">
+            <TopCampaigns campaigns={topCampaigns} />
+          </div>
+        </div>
+
+        {/* Scatter Chart Row */}
+        <div className="mb-8">
+          <ScatterChart data={scatterData} />
         </div>
 
         {/* Bottom Row */}
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 mb-8">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-4 sm:gap-8 mb-8">
           <RecentDonations donations={recentDonations} />
           <TopDonors donors={topDonors} />
         </div>
