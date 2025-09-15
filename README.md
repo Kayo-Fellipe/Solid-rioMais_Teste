@@ -7,7 +7,7 @@ Este projeto foi desenvolvido como parte de um trabalho acadêmico e tem como ob
 
 A plataforma permite:
 
-- Cadastro de **instituições religiosas** com seus dados e informações bancárias. Ao criar uma conta como instituição, ela é automaticamente adicionada à lista de instituições disponíveis para receber doações.
+- Cadastro de **instituições religiosas** com seus dados e informações bancárias.
 - Cadastro de **doadores** interessados em contribuir com essas instituições.
 - Página pública com listagem das instituições cadastradas.
 - Sistema de doações com simulação de pagamento (futuramente via **API do Mercado Pago**).
@@ -21,7 +21,7 @@ A plataforma permite:
 - [Tailwind CSS](https://tailwindcss.com/)  
 - [TypeScript](https://www.typescriptlang.org/)  
 - [Supabase](https://supabase.com/) – autenticação e banco de dados  
-
+- [Lovable.dev](https://lovable.dev/) – geração e edição assistida por IA  
 
 # Instalação Local
 

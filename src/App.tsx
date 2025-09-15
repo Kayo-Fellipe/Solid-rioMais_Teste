@@ -1,42 +1,53 @@
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
-import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
-import { AuthProvider } from './contexts/AuthContext';
-import { Toaster } from '@/components/ui/toaster';
-import Home from './pages/Home';
-import Auth from './pages/Auth';
-import Dashboard from './pages/Dashboard';
-import Institutions from './pages/Institutions';
-import Donate from './pages/Donate';
-import ProtectedRoute from './components/ProtectedRoute';
+
+import { Toaster } from "@/components/ui/toaster";
+import { Toaster as Sonner } from "@/components/ui/sonner";
+import { TooltipProvider } from "@/components/ui/tooltip";
+import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { AuthProvider } from "@/contexts/AuthContext";
+import Index from "./pages/Index";
+import HowItWorks from "./pages/HowItWorks";
+import Contact from "./pages/Contact";
+import DonatorSignup from "./pages/DonatorSignup";
+import InstitutionSignup from "./pages/InstitutionSignup";
+import Auth from "./pages/Auth";
+import MyAccount from "./pages/MyAccount";
+import NotFound from "./pages/NotFound";
+import Donate from "./pages/Donate";
+import DonateProcess from "./pages/DonateProcess";
+import Admin from "./pages/Admin";
+import PaymentSuccess from "./pages/PaymentSuccess";
+import PaymentError from "./pages/PaymentError";
 
 const queryClient = new QueryClient();
 
-function App() {
-  return (
-    <QueryClientProvider client={queryClient}>
-      <AuthProvider>
-        <Router>
-          <div className="min-h-screen bg-background">
-            <Routes>
-              <Route path="/" element={<Home />} />
-              <Route path="/auth" element={<Auth />} />
-              <Route path="/institutions" element={<Institutions />} />
-              <Route path="/donate/:id" element={<Donate />} />
-              <Route 
-                path="/dashboard" 
-                element={
-                  <ProtectedRoute>
-                    <Dashboard />
-                  </ProtectedRoute>
-                } 
-              />
-            </Routes>
-          </div>
-          <Toaster />
-        </Router>
-      </AuthProvider>
-    </QueryClientProvider>
-  );
-}
+const App = () => (
+  <QueryClientProvider client={queryClient}>
+    <TooltipProvider>
+      <Toaster />
+      <Sonner />
+      <BrowserRouter>
+        <AuthProvider>
+          <Routes>
+            <Route path="/" element={<Index />} />
+            <Route path="/how-it-works" element={<HowItWorks />} />
+            <Route path="/contact" element={<Contact />} />
+            <Route path="/donator-signup" element={<DonatorSignup />} />
+            <Route path="/institution-signup" element={<InstitutionSignup />} />
+            <Route path="/auth" element={<Auth />} />
+            <Route path="/minha-conta" element={<MyAccount />} />
+            <Route path="/donate" element={<Donate />} />
+            <Route path="/donate/:id" element={<DonateProcess />} />
+            <Route path="/admin" element={<Admin />} />
+            <Route path="/payment-sucesso" element={<PaymentSuccess />} />
+            <Route path="/payment-errado" element={<PaymentError />} />
+            {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
+            <Route path="*" element={<NotFound />} />
+          </Routes>
+        </AuthProvider>
+      </BrowserRouter>
+    </TooltipProvider>
+  </QueryClientProvider>
+);
 
 export default App;
